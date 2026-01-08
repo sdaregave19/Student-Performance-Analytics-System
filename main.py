@@ -8,4 +8,4 @@ try:
     else:
         print(f"{num} is Odd")
 except ValueError:
-    print("Please enter a valid integer.")
+    print("Please enter a vali.")
