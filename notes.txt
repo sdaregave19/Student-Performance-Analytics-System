@@ -10,7 +10,7 @@
 ✔ Identify low-attendance students (<75%)
 
 🔹 3️⃣ Performance Analytics (CORE VALUE)
-✔ Average marks per student
+✔ Average marks per student 
 ✔ Subject-wise average marks
 ✔ Top 5 & Bottom 5 students
 ✔ Semester-wise performance trend (line chart)
@@ -20,18 +20,7 @@
 ✔ Identify at-risk students
 
 
-$$$$$
-Core Goals
-Track student academic performance
-Identify weak and strong areas
-Predict future performance (optional ML)
-Visualize results using charts & dashboards
-Enable data-driven decision making
-
 2. Key Features (Modules)
-1️⃣ Student Management
-Add / update student details
-Roll number, class, section
 
 2️⃣ Marks & Attendance Management
 Subject-wise marks

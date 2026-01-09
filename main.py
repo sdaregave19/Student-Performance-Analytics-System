@@ -1,5 +1,8 @@
 import database as db
 import streamlit as st
+import Attendance_Records as AR
+import pandas as pd
+from datetime import datetime
 while True:
     print('''-----------\n1️⃣  Student & Marks Management\n2️⃣  Attendance Tracking\n3️⃣  Performance Analytics\n4️⃣  Attendance vs Marks Analysis\n---------- ''')
     
@@ -8,26 +11,36 @@ while True:
     if option==1:#Student & Marks Management
         print('''---------\n1.Add student\n2.View student list\n3.Enter marks\n4.show marks\n----------''')
         
-        option=int(input("Select option -> "))
+        option1=int(input("Select option -> "))
         
-        if option==1:
+        if option1==1:
             student_id=int(input("enter student id -> "))
             name=input("enter student name -> ")
             student_class=input("enter student_class -> ")
             section=input("enter section -> ")
-            db.Student_Marks_Management.add_student(student_id,name,student_class,section)
-        elif option==2:
-            db.Student_Marks_Management.view_student()
-        elif option==3:
+            db.smm.add_student(student_id,name,student_class,section)
+        elif option1==2:
+            db.smm.view_student()
+        elif option1==3:
             student_id=int(input("enter student id -> "))
             subject_id=int(input("enter subject id -> "))
             semester=int(input("enter semerter(I)"))
             marks=int(input("enter marks /80 -> "))
-            db.Student_Marks_Management.enter_marks(student_id,subject_id,semester,marks)
-        elif option==4:
-            db.Student_Marks_Management.view_marks()
+            db.smm.enter_marks(student_id,subject_id,semester,marks)
+        elif option1==4:
+            db.smm.view_marks()
         else:
             print("enter vaild option")   
+    elif option==2:
+        print('''---------\n1.Store attendance percentage\n2.show_attendance\n3.low attendance students\n----------''')
+        option2=int(input("Select option -> "))
+        if option2==1:
+            AR.at.Store_attendance_percentage()
+        elif option2==2:
+            AR.at.show_attendance()
+        else:
+            AR.at.low_attendance_students()
+    
             
             
             
@@ -36,13 +49,8 @@ while True:
             
             
             
-            
-            
-            
-            
-            
-            
-            
+
+
             
             
             
