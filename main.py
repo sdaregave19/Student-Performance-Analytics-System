@@ -40,7 +40,10 @@ while True:
             AR.at.show_attendance()
         else:
             AR.at.low_attendance_students()
-    
+    elif option==3:
+        pass
+    else:
+        pass
             
             
             
