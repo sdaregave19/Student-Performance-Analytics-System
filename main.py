@@ -43,14 +43,14 @@ while True:
             AR.at.low_attendance_students()
             
     elif option==3:
-        print('''---------\n1.Subject_wise_Average_Marks\n2.Top3persubject\n3.\n----------''')
+        print('''---------\n1.Subject_wise_Average_Marks\n2.Top3persubject\n3.At_risk_students_list\n----------''')
         option3=int(input("Select option -> "))
         if option3==1:
             PD.analysis.Subject_wise_Average_Marks()
         elif option3==2:
             PD.analysis.Top3persubject()
         else:
-            pass
+            PD.analysis.At_risk_students_list()
             
             
             
