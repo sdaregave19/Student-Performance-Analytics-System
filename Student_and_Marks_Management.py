@@ -1,14 +1,12 @@
-import mysql.connector 
 import pandas as pd
+from database_connection import get_connection
 
-conn = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="sangamesh19",
-    database="student_analytics"
-)
+def load_connection():
+    conn=get_connection()
+    cursor=conn.cursor()
+    return conn,cursor
 
-print(conn)
+conn,cursor=load_connection()
 cursor = conn.cursor()
 
 # creating tables:-

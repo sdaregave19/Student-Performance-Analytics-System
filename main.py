@@ -1,8 +1,8 @@
-import database as db
+import Student_and_Marks_Management as db
 import streamlit as st
 import Attendance_Records as AR
 import pandas as pd
-from datetime import datetime
+import Performance_Analytics as PD
 while True:
     print('''-----------\n1️⃣  Student & Marks Management\n2️⃣  Attendance Tracking\n3️⃣  Performance Analytics\n4️⃣  Attendance vs Marks Analysis\n---------- ''')
     
@@ -41,9 +41,14 @@ while True:
         else:
             AR.at.low_attendance_students()
     elif option==3:
-        pass
-    else:
-        pass
+        print('''---------\n1.Subject_wise_Average_Marks\n2.Top3persubject\n3.\n----------''')
+        option3=int(input("Select option -> "))
+        if option3==1:
+            PD.analysis.Subject_wise_Average_Marks()
+        elif option3==2:
+            PD.analysis.Top3persubject()
+        else:
+            pass
             
             
             
