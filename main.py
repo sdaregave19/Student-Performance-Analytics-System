@@ -31,6 +31,7 @@ while True:
             db.smm.view_marks()
         else:
             print("enter vaild option")   
+            
     elif option==2:
         print('''---------\n1.Store attendance percentage\n2.show_attendance\n3.low attendance students\n----------''')
         option2=int(input("Select option -> "))
@@ -40,6 +41,7 @@ while True:
             AR.at.show_attendance()
         else:
             AR.at.low_attendance_students()
+            
     elif option==3:
         print('''---------\n1.Subject_wise_Average_Marks\n2.Top3persubject\n3.\n----------''')
         option3=int(input("Select option -> "))
@@ -53,55 +55,4 @@ while True:
             
             
             
-            
-            
-            
-            
-
-
-            
-            
-            
-            
-            
-# 
-# st.title("Student Performance Analytics System")
-# 
-# Sidebar for main menu
-# menu = ["Student & Marks Management", "Attendance Tracking", "Performance Analytics", "Attendance vs Marks Analysis"]
-# choice = st.sidebar.selectbox("Select Feature", menu)
-# 
-# -------------------------
-# 1️⃣ Student & Marks Management
-# -------------------------
-# if choice == "Student & Marks Management":
-    # st.subheader("Student & Marks Management")
-# 
-    # sub_menu = ["Add Student", "View Student List", "Enter Marks"]
-    # sub_choice = st.radio("Choose Action", sub_menu)
-# 
-    # if sub_choice == "Add Student":
-        # st.write("Add a new student")
-        # student_id = st.number_input("Student ID", min_value=1, step=1)
-        # name = st.text_input("Name")
-        # student_class = st.text_input("Class")
-        # section = st.text_input("Section")
-        # if st.button("Add Student"):
-            # db.add_student(student_id, name, student_class, section)
-            # st.success(f"Student {name} added successfully!")
-# 
-    # elif sub_choice == "View Student List":
-        # st.write("Student List")
-        # students = db.view_student()  # Make sure this returns a list of rows
-        # for s in students:
-            # st.write(s)
-# 
-    # elif sub_choice == "Enter Marks":
-        # st.write("Enter Marks for a Student")
-        # student_id = st.number_input("Student ID", min_value=1, step=1, key="marks_student")
-        # subject_id = st.number_input("Subject ID", min_value=1, step=1)
-        # semester = st.number_input("Semester", min_value=1, step=1)
-        # marks = st.number_input("Marks (/80)", min_value=0, max_value=80, step=1)
-        # if st.button("Submit Marks"):
-            # db.enter_marks(student_id, subject_id, semester, marks)
-            # st.success("Marks entered successfully!")
+        

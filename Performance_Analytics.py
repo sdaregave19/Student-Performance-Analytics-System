@@ -44,7 +44,7 @@ class Performance_Analytics:
         plt.savefig("Subject_wise_Average_Marks")
     
     def Top3persubject (self):
-        subject_id=int(input("enter subject id"))
+        subject_id=int(input("enter subject id -> "))
         query='''SELECT
                     st.name,
                     m.student_id,
@@ -55,9 +55,49 @@ class Performance_Analytics:
                 INNER JOIN students AS st ON st.student_id=m.student_id
                 WHERE m.subject_id=%s
                 ORDER BY m.marks DESC
+                LIMIT 3
         '''
         val=(subject_id,)
         table=pd.read_sql(query,self.conn,params=val)
         print(table)
-       
+        
+        query2=self.cursor.execute(query,val)
+        rows=self.cursor.fetchall()
+        df=pd.DataFrame(rows,columns=[x[0] for x in self.cursor.description])
+        
+        self.conn.close()
+        
+        plt.figure(figsize=(5,5))
+        plt.plot(df['name'],df['marks'],marker='o',color='red')
+        plt.xlabel("NAME")
+        plt.ylabel("Marks")
+        plt.title("Top3persubject")
+        plt.ylim(0, 100)
+        plt.savefig("op3persubject")
+        
+    def At_risk_students_list(self):
+        query='''SELECT 
+                    st.name,
+                    a.student_id,
+                    a.attendance_percentage,
+                    AVG(m.marks) AS avg_marks
+                FROM marks AS m
+                INNER JOIN attendance AS a ON m.student_id=a.student_id
+                INNER JOIN students AS st ON st.student_id=m.student_id
+                WHERE a.attendance_percentage <80 
+                GROUP BY st.name,
+                    a.student_id,
+                    a.attendance_percentage
+                HAVING avg_marks<70
+                ORDER BY a.student_id DESC
+        '''
+        table=pd.read_sql(query,self.conn)
+        print(table)
+        
+        # query2=self.cursor.execute(query)
+        # rows=self.cursor.fetchall()
+        # df=pd.DataFrame(rows,columns=[x[0] for x in self.cursor.description])
+        
+        # self.conn.close()
+        
 analysis=Performance_Analytics(conn,cursor)
