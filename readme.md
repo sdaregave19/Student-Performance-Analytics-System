@@ -14,10 +14,12 @@ A Python-based analytics tool designed to help educators and institutions **gain
 - **Python** — Core logic and analysis  
 - **Pandas & NumPy** — Data manipulation  
 - **Matplotlib / Seaborn** — Visualizations  
+- **SQL** — Database connectivity and querying  
 
 ## 🗃️ Repository Structure
 
 ```
+
 STUDENT PERFORMANCE ANALYTICS SYSTEM/
 ├── .venv19/                        # Virtual environment
 ├── feature/                        # Core features
@@ -35,7 +37,6 @@ STUDENT PERFORMANCE ANALYTICS SYSTEM/
 
 ## 📈 How It Works
 
-1. **Load & Clean Data** — Import student performance records (CSV/Database).  
-2. **Analyze Metrics** — Calculate averages, performance distributions, and subject-wise scores.  
+1. **Load & Clean Data** — Import student performance records from database or files.  
+2. **Analyze Metrics** — Calculate averages, performance distributions, subject-wise scores, and attendance trends.  
 3. **Visualize Results** — Generate graphs that illustrate trends and comparisons.
-
