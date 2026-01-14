@@ -18,11 +18,19 @@ A Python-based analytics tool designed to help educators and institutions **gain
 ## 🗃️ Repository Structure
 
 ```
-├── main.py                  # Main script to run analytics
-├── database_connection.py   # Database or data ingestion logic
-├── visualizations/          # Output charts/graphs
-├── requirements.txt         # Python dependencies
-└── README.md
+STUDENT PERFORMANCE ANALYTICS SYSTEM/
+├── .venv19/                        # Virtual environment
+├── feature/                        # Core features
+│   ├── Attendance_Records.py
+│   ├── Performance_Analytics.py
+│   └── Student_and_Marks_Management.py
+├── visualization/                  # Charts and graphs
+│   ├── op3persubject.png
+│   └── Subject_wise_Average_Marks.png
+├── database_connection.py          # Database or data ingestion logic
+├── main.py                         # Main script to run analytics
+└── readme.md                        # This README file
+
 ````
 
 ## 📈 How It Works
