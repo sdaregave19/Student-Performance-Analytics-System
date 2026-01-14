@@ -1,0 +1,132 @@
+1️⃣ Subject-wise Average Marks
+
+Goal: Identify which subjects students perform well in and which are weak areas.
+
+SQL Example
+SELECT 
+    sub.subject_name,
+    AVG(m.marks) AS avg_marks
+FROM marks m
+JOIN subjects sub ON m.subject_id = sub.subject_id
+GROUP BY sub.subject_name;
+
+Pandas Example
+df = pd.read_sql("SELECT * FROM marks JOIN subjects USING(subject_id)", conn)
+subject_avg = df.groupby("subject_name")["marks"].mean()
+print(subject_avg)
+
+
+Insight:
+
+Teachers can focus on weak subjects.
+
+Compare performance across subjects.
+
+2️⃣ Student-wise Overall Performance
+
+Goal: Rank students based on total or average marks.
+
+SQL Example
+SELECT 
+    s.student_id,
+    s.name,
+    AVG(m.marks) AS avg_marks
+FROM students s
+JOIN marks m ON s.student_id = m.student_id
+GROUP BY s.student_id, s.name
+ORDER BY avg_marks DESC;
+
+Pandas Example
+df = pd.read_sql("SELECT * FROM marks JOIN students USING(student_id)", conn)
+student_avg = df.groupby(["student_id", "name"])["marks"].mean().sort_values(ascending=False)
+print(student_avg)
+
+
+Insight:
+
+Identify top and bottom performers.
+
+Helps in reward, guidance, and remedial actions.
+
+3️⃣ Attendance vs Performance Analysis
+
+Goal: Check if low attendance correlates with low marks.
+
+SQL Example
+SELECT 
+    s.student_id,
+    s.name,
+    a.attendance_percentage,
+    AVG(m.marks) AS avg_marks
+FROM students s
+JOIN attendance a ON s.student_id = a.student_id
+JOIN marks m ON s.student_id = m.student_id
+GROUP BY s.student_id, s.name, a.attendance_percentage;
+
+Pandas + Matplotlib
+import matplotlib.pyplot as plt
+
+df = pd.read_sql("""
+SELECT s.student_id, s.name, a.attendance_percentage, m.marks
+FROM students s
+JOIN attendance a ON s.student_id = a.student_id
+JOIN marks m ON s.student_id = m.student_id
+""", conn)
+
+df_grouped = df.groupby(["student_id","name","attendance_percentage"])["marks"].mean().reset_index()
+
+plt.scatter(df_grouped["attendance_percentage"], df_grouped["marks"])
+plt.xlabel("Attendance %")
+plt.ylabel("Average Marks")
+plt.title("Attendance vs Average Marks")
+plt.show()
+
+
+Insight:
+
+Identify students at risk due to poor attendance.
+
+Can motivate attendance policies.
+
+4️⃣ Class-wise / Section-wise Performance
+
+Goal: Compare performance of different classes or sections.
+
+SQL Example
+SELECT 
+    s.class,
+    s.section,
+    AVG(m.marks) AS avg_marks
+FROM students s
+JOIN marks m ON s.student_id = m.student_id
+GROUP BY s.class, s.section;
+
+Pandas Example
+df = pd.read_sql("SELECT * FROM students JOIN marks USING(student_id)", conn)
+class_avg = df.groupby(["class", "section"])["marks"].mean()
+print(class_avg)
+
+
+Insight:
+
+Identify classes or sections that are struggling.
+
+Helps allocate extra resources or teachers.
+
+✅ Optional Advanced Analyses
+
+Semester-wise trend: Track improvement or decline over semesters.
+
+Top N students per subject: Identify subject specialists.
+
+Risk analysis: Combine attendance < 70% and avg_marks < 70% to flag students.
+
+💡 Summary of Best 4 Analyses:
+
+Subject-wise Average Marks
+
+Student-wise Overall Performance
+
+Attendance vs Marks Correlation
+
+Class/Section-wise Performance
