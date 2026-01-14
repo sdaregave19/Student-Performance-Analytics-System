@@ -1,8 +1,8 @@
-import Student_and_Marks_Management as db
+import feature.Student_and_Marks_Management as db
 import streamlit as st
-import Attendance_Records as AR
+import feature.Attendance_Records as AR
 import pandas as pd
-import Performance_Analytics as PD
+import feature.Performance_Analytics as PD
 while True:
     print('''-----------\n1️⃣  Student & Marks Management\n2️⃣  Attendance Tracking\n3️⃣  Performance Analytics\n4️⃣  Attendance vs Marks Analysis\n---------- ''')
     
