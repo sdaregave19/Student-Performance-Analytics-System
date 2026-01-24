@@ -27,7 +27,7 @@ STUDENT PERFORMANCE ANALYTICS SYSTEM/
 │   ├── Performance_Analytics.py
 │   └── Student_and_Marks_Management.py
 ├── visualization/                  # Charts and graphs
-│   ├── op3persubject.png
+│   ├── Top3persubject.png
 │   └── Subject_wise_Average_Marks.png
 ├── database_connection.py          # Database or data ingestion logic
 ├── main.py                         # Main script to run analytics
